@@ -1,0 +1,45 @@
+map_type: costmap
+origin_z: 0.0
+z_resolution: 1
+z_voxels: 2
+cost_scaling_factor: 60
+inflation_radius: 10.0
+
+obstacle_range: 10.0
+raytrace_range: 12.5
+
+publish_voxel_map: false
+transform_tolerance: 0.5
+meter_scoring: true
+
+footprint: [[-0.21, -0.165], [-0.21, 0.165], [0.21, 0.165], [0.21, -0.165]]
+footprint_padding: 0.1
+
+plugins:
+
+# - {name: static_layer, type: "costmap_2d::StaticLayer"}
+- {name: obstacles_layer, type: "costmap_2d::ObstacleLayer"}
+# - {name: simple_layer, type: "simple_layer_namespace::SimpleLayer"}
+# - {name: social_layer, type: "social_navigation_layers::ProxemicLayer"}
+- {name: inflation_layer, type: "costmap_2d::InflationLayer"}
+
+
+
+
+obstacles_layer:
+  observation_sources: scan
+  scan: {sensor_frame: velodyne, data_type: LaserScan, topic: scan, marking: true, clearing: true, min_obstacle_height: -100000.0, max_obstacle_height: 100000.0, obstacle_range: 10.0, raytrace_range: 12.5}
+
+inflation_layer:
+ inflation_radius: 0.3
+ enabled: true
+
+social_layer:
+  enabled: false
+  cutoff: 125.0
+  amplitude: 254
+  covariance: 1.25
+  factor: 5.0
+
+simple_layer:
+  enabled: false
