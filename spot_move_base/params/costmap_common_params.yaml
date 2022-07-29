@@ -17,7 +17,7 @@ footprint_padding: 0.1
 
 plugins:
 
-# - {name: static_layer, type: "costmap_2d::StaticLayer"}
+- {name: static_layer, type: "costmap_2d::StaticLayer"}
 - {name: obstacles_layer, type: "costmap_2d::ObstacleLayer"}
 # - {name: simple_layer, type: "simple_layer_namespace::SimpleLayer"}
 # - {name: social_layer, type: "social_navigation_layers::ProxemicLayer"}

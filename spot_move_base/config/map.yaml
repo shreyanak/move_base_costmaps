@@ -1,4 +1,4 @@
-image: image.png or #output.pgm
+image: image.png # or output.pgm
 resolution: 0.0500000000
 origin: [0.0, 0.0, 0.0]
 negate: 0
